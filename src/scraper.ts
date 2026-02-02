@@ -56,12 +56,16 @@ export class ZillowScraper {
 
                 console.log(`\nNavigating to page ${currentPage}...`);
                 await page.goto(pageUrl, {
-                    waitUntil: 'load',  // Changed from 'networkidle' - bot protection prevents idle
+                    waitUntil: 'domcontentloaded', // Faster than 'load'
                     timeout: 60000
                 });
 
-                console.log('Waiting for page to fully load...');
-                await page.waitForTimeout(15000);
+                console.log('Waiting for data...');
+                try {
+                    await page.waitForSelector('#__NEXT_DATA__', { state: 'attached', timeout: 15000 });
+                } catch (e) {
+                    console.log('Wait for JSON timed out, attempting extraction anyway...');
+                }
 
                 console.log('Extracting agent data from __NEXT_DATA__ JSON...\n');
 
@@ -200,8 +204,14 @@ export class ZillowScraper {
         };
 
         try {
-            await page.goto(url, { waitUntil: 'load', timeout: 60000 });
-            await page.waitForTimeout(8000);
+            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+
+            // Wait for __NEXT_DATA__ to be present instead of hard wait
+            try {
+                await page.waitForSelector('#__NEXT_DATA__', { state: 'attached', timeout: 15000 });
+            } catch (e) {
+                console.log('    Wait for JSON timed out, attempting extraction anyway...');
+            }
 
             // Extract from __NEXT_DATA__ JSON
             const extracted = await page.evaluate(() => {

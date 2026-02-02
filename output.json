@@ -10,7 +10,7 @@
     "average_price": "$710K",
     "price_range": "$12K - $9.3M",
     "team_members_count": 108,
-    "scrape_time_seconds": 18.25
+    "scrape_time_seconds": 3.8
   },
   {
     "agent_name": "Sean McConnell",
@@ -23,7 +23,7 @@
     "average_price": "$937K",
     "price_range": "$25K - $14.0M",
     "team_members_count": 33,
-    "scrape_time_seconds": 15.8
+    "scrape_time_seconds": 3.44
   },
   {
     "agent_name": "Collective Group",
@@ -36,7 +36,7 @@
     "average_price": "$845K",
     "price_range": "$58K - $5.7M",
     "team_members_count": 30,
-    "scrape_time_seconds": 14.55
+    "scrape_time_seconds": 5.48
   },
   {
     "agent_name": "Maynard Wagner",
@@ -49,7 +49,7 @@
     "average_price": "$995K",
     "price_range": "$250K - $4.7M",
     "team_members_count": 3,
-    "scrape_time_seconds": 14.94
+    "scrape_time_seconds": 3.55
   },
   {
     "agent_name": "David Marks",
@@ -62,7 +62,7 @@
     "average_price": "$969K",
     "price_range": "$87K - $4.8M",
     "team_members_count": 16,
-    "scrape_time_seconds": 15.05
+    "scrape_time_seconds": 5.52
   },
   {
     "agent_name": "Hao Dang",
@@ -75,7 +75,7 @@
     "average_price": "$1.3M",
     "price_range": "$123K - $11.3M",
     "team_members_count": 18,
-    "scrape_time_seconds": 12.93
+    "scrape_time_seconds": 4.57
   },
   {
     "agent_name": "TRI STAR Team",
@@ -88,7 +88,7 @@
     "average_price": "$859K",
     "price_range": "$50K - $4.0M",
     "team_members_count": 6,
-    "scrape_time_seconds": 14.23
+    "scrape_time_seconds": 2.98
   },
   {
     "agent_name": "Lucas Pinto",
@@ -101,7 +101,7 @@
     "average_price": "$786K",
     "price_range": "$29K - $2.7M",
     "team_members_count": 18,
-    "scrape_time_seconds": 15.35
+    "scrape_time_seconds": 4.61
   },
   {
     "agent_name": "Kelly McGinnis",
@@ -114,7 +114,7 @@
     "average_price": "$1.2M",
     "price_range": "$408K - $3.3M",
     "team_members_count": null,
-    "scrape_time_seconds": 14.36
+    "scrape_time_seconds": 3.1
   },
   {
     "agent_name": "Andrew Hafzalla and Maria Torres",
@@ -127,7 +127,7 @@
     "average_price": "$966K",
     "price_range": "$287K - $2.0M",
     "team_members_count": null,
-    "scrape_time_seconds": 16.87
+    "scrape_time_seconds": 3.1
   },
   {
     "agent_name": "Crowthers and Shepodd Team",
@@ -140,7 +140,7 @@
     "average_price": "$999K",
     "price_range": "$247K - $4.7M",
     "team_members_count": 2,
-    "scrape_time_seconds": 14.5
+    "scrape_time_seconds": 3.88
   },
   {
     "agent_name": "Robert Ott",
@@ -153,7 +153,7 @@
     "average_price": "$668K",
     "price_range": "$40K - $5.3M",
     "team_members_count": 51,
-    "scrape_time_seconds": 18.44
+    "scrape_time_seconds": 3.42
   },
   {
     "agent_name": "Mark Caldwell",
@@ -166,7 +166,7 @@
     "average_price": "$740K",
     "price_range": "$35K - $1.8M",
     "team_members_count": 9,
-    "scrape_time_seconds": 14.32
+    "scrape_time_seconds": 3.32
   },
   {
     "agent_name": "Brennen Clouse",
@@ -179,7 +179,7 @@
     "average_price": "$795K",
     "price_range": "$175K - $2.4M",
     "team_members_count": 4,
-    "scrape_time_seconds": 17.22
+    "scrape_time_seconds": 3
   },
   {
     "agent_name": "Michelle McGrath",
@@ -192,7 +192,7 @@
     "average_price": "$939K",
     "price_range": "$50K - $4.0M",
     "team_members_count": null,
-    "scrape_time_seconds": 14.25
+    "scrape_time_seconds": 4.35
   },
   {
     "agent_name": "Wilcynski Partners",
@@ -205,7 +205,7 @@
     "average_price": "$1.0M",
     "price_range": "$250K - $4.0M",
     "team_members_count": 12,
-    "scrape_time_seconds": 17.35
+    "scrape_time_seconds": 4.85
   },
   {
     "agent_name": "Dan Blau",
@@ -218,7 +218,7 @@
     "average_price": "$1.1M",
     "price_range": "$390K - $3.1M",
     "team_members_count": null,
-    "scrape_time_seconds": 14.82
+    "scrape_time_seconds": 4.89
   },
   {
     "agent_name": "Kayla Preston",
@@ -231,7 +231,7 @@
     "average_price": "$898K",
     "price_range": "$325K - $3.2M",
     "team_members_count": null,
-    "scrape_time_seconds": 14.12
+    "scrape_time_seconds": 3.9
   },
   {
     "agent_name": "Tracy Erickson",
@@ -244,7 +244,7 @@
     "average_price": "$1.3M",
     "price_range": "$200K - $5.7M",
     "team_members_count": null,
-    "scrape_time_seconds": 14.18
+    "scrape_time_seconds": 3.93
   },
   {
     "agent_name": "Nest NW Group",
@@ -257,7 +257,7 @@
     "average_price": "$924K",
     "price_range": "$35K - $4.6M",
     "team_members_count": 9,
-    "scrape_time_seconds": 16.9
+    "scrape_time_seconds": 4.59
   },
   {
     "agent_name": "Carmen Gayton",
@@ -270,7 +270,7 @@
     "average_price": "$1.2M",
     "price_range": "$230K - $21.3M",
     "team_members_count": 3,
-    "scrape_time_seconds": 14.69
+    "scrape_time_seconds": 3.12
   },
   {
     "agent_name": "Seattle Works Real Estate",
@@ -283,7 +283,7 @@
     "average_price": "$665K",
     "price_range": "$20K - $3.4M",
     "team_members_count": 40,
-    "scrape_time_seconds": 18.8
+    "scrape_time_seconds": 5.41
   },
   {
     "agent_name": "Neda Perrina",
@@ -296,7 +296,7 @@
     "average_price": "$1.7M",
     "price_range": "$200K - $8.3M",
     "team_members_count": 10,
-    "scrape_time_seconds": 14.96
+    "scrape_time_seconds": 5
   },
   {
     "agent_name": "Ashley Heerman",
@@ -309,7 +309,7 @@
     "average_price": "$754K",
     "price_range": "$136K - $2.3M",
     "team_members_count": null,
-    "scrape_time_seconds": 14.7
+    "scrape_time_seconds": 4.42
   },
   {
     "agent_name": "Tribeca NW",
@@ -322,7 +322,7 @@
     "average_price": "$633K",
     "price_range": "$17K - $4.0M",
     "team_members_count": 25,
-    "scrape_time_seconds": 17.54
+    "scrape_time_seconds": 4.66
   },
   {
     "agent_name": "Steve Lieu",
@@ -335,7 +335,7 @@
     "average_price": "$1.3M",
     "price_range": "$348K - $2.8M",
     "team_members_count": null,
-    "scrape_time_seconds": 16.26
+    "scrape_time_seconds": 3.35
   },
   {
     "agent_name": "John Madrid",
@@ -348,7 +348,7 @@
     "average_price": "$1.5M",
     "price_range": "$610K - $8.0M",
     "team_members_count": null,
-    "scrape_time_seconds": 15.24
+    "scrape_time_seconds": 3.55
   },
   {
     "agent_name": "Justin Day",
@@ -361,7 +361,7 @@
     "average_price": "$1.3M",
     "price_range": "$455K - $4.7M",
     "team_members_count": null,
-    "scrape_time_seconds": 13.12
+    "scrape_time_seconds": 4
   },
   {
     "agent_name": "Alex Motroc",
@@ -374,7 +374,7 @@
     "average_price": "$1.1M",
     "price_range": "$480K - $2.4M",
     "team_members_count": null,
-    "scrape_time_seconds": 15.23
+    "scrape_time_seconds": 3.16
   },
   {
     "agent_name": "Sound Team Realty",
@@ -387,6 +387,916 @@
     "average_price": "$881K",
     "price_range": "$21K - $3.6M",
     "team_members_count": 4,
-    "scrape_time_seconds": 13.35
+    "scrape_time_seconds": 3.82
+  },
+  {
+    "agent_name": "Kimberly Coulson",
+    "profile_url": "https://www.zillow.com/profile/kcoulson1813",
+    "rating_stars": 4.9,
+    "review_count": 71,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 3,
+    "total_sales": 85,
+    "average_price": "$682K",
+    "price_range": "$315K - $2.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.87
+  },
+  {
+    "agent_name": "Kristine Losh",
+    "profile_url": "https://www.zillow.com/profile/Kristine-Losh",
+    "rating_stars": 5,
+    "review_count": 54,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 21,
+    "total_sales": 259,
+    "average_price": "$1.1M",
+    "price_range": "$310K - $3.9M",
+    "team_members_count": 6,
+    "scrape_time_seconds": 3.12
+  },
+  {
+    "agent_name": "RWG Properties",
+    "profile_url": "https://www.zillow.com/profile/rwgproperties",
+    "rating_stars": 5,
+    "review_count": 54,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 41,
+    "total_sales": 358,
+    "average_price": "$895K",
+    "price_range": "$115K - $3.2M",
+    "team_members_count": 5,
+    "scrape_time_seconds": 4.93
+  },
+  {
+    "agent_name": "Margo Christophilis",
+    "profile_url": "https://www.zillow.com/profile/Margo-Christophilis",
+    "rating_stars": 4.9,
+    "review_count": 145,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 72,
+    "total_sales": 620,
+    "average_price": "$705K",
+    "price_range": "$100K - $1.5M",
+    "team_members_count": 9,
+    "scrape_time_seconds": 3.38
+  },
+  {
+    "agent_name": "Jack Duggan",
+    "profile_url": "https://www.zillow.com/profile/jackdugganseattle",
+    "rating_stars": 5,
+    "review_count": 81,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 19,
+    "total_sales": 115,
+    "average_price": "$1.2M",
+    "price_range": "$177K - $14.0M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.15
+  },
+  {
+    "agent_name": "Robert Street",
+    "profile_url": "https://www.zillow.com/profile/Robert-Street",
+    "rating_stars": 5,
+    "review_count": 58,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 16,
+    "total_sales": 278,
+    "average_price": "$751K",
+    "price_range": "$175K - $1.7M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.09
+  },
+  {
+    "agent_name": "Chris Gurnee",
+    "profile_url": "https://www.zillow.com/profile/ChrisGurneeTeam",
+    "rating_stars": 4.9,
+    "review_count": 177,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 98,
+    "total_sales": 1294,
+    "average_price": "$600K",
+    "price_range": "$12K - $2.8M",
+    "team_members_count": 25,
+    "scrape_time_seconds": 4.85
+  },
+  {
+    "agent_name": "Felix Ceballos",
+    "profile_url": "https://www.zillow.com/profile/FelixSeattleHomes",
+    "rating_stars": 5,
+    "review_count": 161,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 85,
+    "total_sales": 211,
+    "average_price": "$1.0M",
+    "price_range": "$99K - $3.0M",
+    "team_members_count": 8,
+    "scrape_time_seconds": 3.11
+  },
+  {
+    "agent_name": "Larry Wilcynski",
+    "profile_url": "https://www.zillow.com/profile/larry2004",
+    "rating_stars": 5,
+    "review_count": 30,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 45,
+    "total_sales": 903,
+    "average_price": "$1.0M",
+    "price_range": "$250K - $4.0M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.79
+  },
+  {
+    "agent_name": "TRI STAR Team",
+    "profile_url": "https://www.zillow.com/profile/TRISTARteamre",
+    "rating_stars": 5,
+    "review_count": 27,
+    "badge_type": null,
+    "sales_last_12_months": null,
+    "total_sales": 815,
+    "average_price": null,
+    "price_range": null,
+    "team_members_count": null,
+    "scrape_time_seconds": 4.34
+  },
+  {
+    "agent_name": "Emily Shepodd",
+    "profile_url": "https://www.zillow.com/profile/emily-shepodd",
+    "rating_stars": 5,
+    "review_count": 33,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 25,
+    "total_sales": 228,
+    "average_price": "$1.1M",
+    "price_range": "$247K - $4.7M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.14
+  },
+  {
+    "agent_name": "Kari Rae Davis",
+    "profile_url": "https://www.zillow.com/profile/kariraed",
+    "rating_stars": 5,
+    "review_count": 45,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 10,
+    "total_sales": 148,
+    "average_price": "$591K",
+    "price_range": "$40K - $1.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.95
+  },
+  {
+    "agent_name": "Andrew Jennings",
+    "profile_url": "https://www.zillow.com/profile/theandrewjennings",
+    "rating_stars": 5,
+    "review_count": 56,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 17,
+    "total_sales": 110,
+    "average_price": "$871K",
+    "price_range": "$45K - $2.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.36
+  },
+  {
+    "agent_name": "Sarah Hughes-Giles",
+    "profile_url": "https://www.zillow.com/profile/sarah94324",
+    "rating_stars": 5,
+    "review_count": 34,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 5,
+    "total_sales": 64,
+    "average_price": "$978K",
+    "price_range": "$340K - $4.8M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.53
+  },
+  {
+    "agent_name": "Christina and Nick Fitzer",
+    "profile_url": "https://www.zillow.com/profile/dwellhometeam",
+    "rating_stars": 5,
+    "review_count": 166,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 74,
+    "total_sales": 870,
+    "average_price": "$997K",
+    "price_range": "$120K - $5.0M",
+    "team_members_count": 4,
+    "scrape_time_seconds": 4.56
+  },
+  {
+    "agent_name": "Jim Pullin",
+    "profile_url": "https://www.zillow.com/profile/JimPullinRE",
+    "rating_stars": 5,
+    "review_count": 57,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 32,
+    "total_sales": 427,
+    "average_price": "$740K",
+    "price_range": "$70K - $2.9M",
+    "team_members_count": 0,
+    "scrape_time_seconds": 3.37
+  },
+  {
+    "agent_name": "Monika MacGuffie",
+    "profile_url": "https://www.zillow.com/profile/monikalm",
+    "rating_stars": 5,
+    "review_count": 35,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 12,
+    "total_sales": 108,
+    "average_price": "$969K",
+    "price_range": "$330K - $3.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.03
+  },
+  {
+    "agent_name": "The Reger Group Greater Seattle",
+    "profile_url": "https://www.zillow.com/profile/SeattleTRG",
+    "rating_stars": 5,
+    "review_count": 72,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 50,
+    "total_sales": 56,
+    "average_price": "$779K",
+    "price_range": "$235K - $2.2M",
+    "team_members_count": 6,
+    "scrape_time_seconds": 3.34
+  },
+  {
+    "agent_name": "Roy Towse",
+    "profile_url": "https://www.zillow.com/profile/RoyTowse",
+    "rating_stars": 5,
+    "review_count": 333,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 69,
+    "total_sales": 1186,
+    "average_price": "$1.5M",
+    "price_range": "$89K - $6.6M",
+    "team_members_count": 5,
+    "scrape_time_seconds": 4.81
+  },
+  {
+    "agent_name": "Matt Perrone",
+    "profile_url": "https://www.zillow.com/profile/MattPerrone",
+    "rating_stars": 5,
+    "review_count": 40,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": null,
+    "total_sales": 75,
+    "average_price": null,
+    "price_range": null,
+    "team_members_count": null,
+    "scrape_time_seconds": 3.13
+  },
+  {
+    "agent_name": "Jordan Rabinowe",
+    "profile_url": "https://www.zillow.com/profile/JordanRabinowe",
+    "rating_stars": 5,
+    "review_count": 27,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 2,
+    "total_sales": 27,
+    "average_price": "$1.0M",
+    "price_range": "$730K - $1.4M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.66
+  },
+  {
+    "agent_name": "Richard Mallory",
+    "profile_url": "https://www.zillow.com/profile/Richard-Mallory",
+    "rating_stars": 4.9,
+    "review_count": 40,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 20,
+    "total_sales": 63,
+    "average_price": "$794K",
+    "price_range": "$260K - $3.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 5.06
+  },
+  {
+    "agent_name": "Mike Chaffee",
+    "profile_url": "https://www.zillow.com/profile/WhisperRealEstate",
+    "rating_stars": 5,
+    "review_count": 175,
+    "badge_type": null,
+    "sales_last_12_months": 34,
+    "total_sales": 763,
+    "average_price": "$1.4M",
+    "price_range": "$180K - $5.1M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.75
+  },
+  {
+    "agent_name": "Daniel Braun",
+    "profile_url": "https://www.zillow.com/profile/daniel85677",
+    "rating_stars": 5,
+    "review_count": 20,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 7,
+    "total_sales": 27,
+    "average_price": "$921K",
+    "price_range": "$300K - $1.5M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.78
+  },
+  {
+    "agent_name": "Team Phillipa and Fariba",
+    "profile_url": "https://www.zillow.com/profile/PhillipaLeseberg",
+    "rating_stars": 5,
+    "review_count": 129,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 16,
+    "total_sales": 167,
+    "average_price": "$1.1M",
+    "price_range": "$250K - $3.2M",
+    "team_members_count": 1,
+    "scrape_time_seconds": 3.68
+  },
+  {
+    "agent_name": "Michael Dapper",
+    "profile_url": "https://www.zillow.com/profile/Michael-Dapper",
+    "rating_stars": 5,
+    "review_count": 23,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 19,
+    "total_sales": 83,
+    "average_price": "$725K",
+    "price_range": "$250K - $2.8M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.54
+  },
+  {
+    "agent_name": "Ben Berman",
+    "profile_url": "https://www.zillow.com/profile/Ben5331",
+    "rating_stars": 5,
+    "review_count": 23,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 9,
+    "total_sales": 100,
+    "average_price": "$1.1M",
+    "price_range": "$425K - $2.5M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.69
+  },
+  {
+    "agent_name": "Edrick Wang",
+    "profile_url": "https://www.zillow.com/profile/edrickwindermere",
+    "rating_stars": 5,
+    "review_count": 30,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 5,
+    "total_sales": 39,
+    "average_price": "$977K",
+    "price_range": "$465K - $2.0M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.8
+  },
+  {
+    "agent_name": "Jarrett Coulson",
+    "profile_url": "https://www.zillow.com/profile/jarrettc13",
+    "rating_stars": 5,
+    "review_count": 38,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 9,
+    "total_sales": 112,
+    "average_price": "$777K",
+    "price_range": "$90K - $2.1M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.62
+  },
+  {
+    "agent_name": "John Labrador",
+    "profile_url": "https://www.zillow.com/profile/John-Labrador",
+    "rating_stars": 5,
+    "review_count": 23,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 24,
+    "total_sales": 64,
+    "average_price": "$868K",
+    "price_range": "$264K - $3.9M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.68
+  },
+  {
+    "agent_name": "Katie Melton",
+    "profile_url": "https://www.zillow.com/profile/soldbykatiemelton",
+    "rating_stars": 5,
+    "review_count": 47,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 15,
+    "total_sales": 96,
+    "average_price": "$764K",
+    "price_range": "$245K - $2.2M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.83
+  },
+  {
+    "agent_name": "Patrick Downing",
+    "profile_url": "https://www.zillow.com/profile/patrickvdowning",
+    "rating_stars": 5,
+    "review_count": 24,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 11,
+    "total_sales": 99,
+    "average_price": "$758K",
+    "price_range": "$437K - $1.6M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.82
+  },
+  {
+    "agent_name": "Peter Ahrnes",
+    "profile_url": "https://www.zillow.com/profile/PeterAhrnes",
+    "rating_stars": 5,
+    "review_count": 36,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 11,
+    "total_sales": 118,
+    "average_price": "$607K",
+    "price_range": "$83K - $985K",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.13
+  },
+  {
+    "agent_name": "Ben Morton",
+    "profile_url": "https://www.zillow.com/profile/Ben-Morton-Homes",
+    "rating_stars": 4.8,
+    "review_count": 23,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 1,
+    "total_sales": 118,
+    "average_price": "$826K",
+    "price_range": "$500K - $1.1M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.81
+  },
+  {
+    "agent_name": "Tarek Moghrabi",
+    "profile_url": "https://www.zillow.com/profile/Tarek-Moghrabi",
+    "rating_stars": 5,
+    "review_count": 165,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 27,
+    "total_sales": 321,
+    "average_price": "$1.1M",
+    "price_range": "$335K - $3.4M",
+    "team_members_count": 4,
+    "scrape_time_seconds": 5.62
+  },
+  {
+    "agent_name": "Elena Markov",
+    "profile_url": "https://www.zillow.com/profile/Elena-Markov",
+    "rating_stars": 5,
+    "review_count": 56,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 1,
+    "total_sales": 178,
+    "average_price": "$591K",
+    "price_range": "$340K - $1.4M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.83
+  },
+  {
+    "agent_name": "Kevin Farber",
+    "profile_url": "https://www.zillow.com/profile/KevinFarber",
+    "rating_stars": 5,
+    "review_count": 38,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 12,
+    "total_sales": 69,
+    "average_price": "$713K",
+    "price_range": "$230K - $2.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.96
+  },
+  {
+    "agent_name": "Laura Krumwiede",
+    "profile_url": "https://www.zillow.com/profile/laurak8",
+    "rating_stars": 5,
+    "review_count": 24,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 7,
+    "total_sales": 68,
+    "average_price": "$677K",
+    "price_range": "$349K - $1.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.73
+  },
+  {
+    "agent_name": "Natalie Alfieri",
+    "profile_url": "https://www.zillow.com/profile/nataliemalfieri",
+    "rating_stars": 5,
+    "review_count": 36,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 13,
+    "total_sales": 110,
+    "average_price": "$857K",
+    "price_range": "$320K - $2.6M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.16
+  },
+  {
+    "agent_name": "Savanna Taylor",
+    "profile_url": "https://www.zillow.com/profile/savanna-taylor",
+    "rating_stars": 5,
+    "review_count": 23,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 16,
+    "total_sales": 59,
+    "average_price": "$841K",
+    "price_range": "$385K - $2.5M",
+    "team_members_count": 2,
+    "scrape_time_seconds": 4.89
+  },
+  {
+    "agent_name": "Woody Munk",
+    "profile_url": "https://www.zillow.com/profile/wmunk",
+    "rating_stars": 4.9,
+    "review_count": 32,
+    "badge_type": null,
+    "sales_last_12_months": 17,
+    "total_sales": 89,
+    "average_price": "$875K",
+    "price_range": "$270K - $2.7M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.55
+  },
+  {
+    "agent_name": "stine jackson",
+    "profile_url": "https://www.zillow.com/profile/stinescho",
+    "rating_stars": 5,
+    "review_count": 58,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 12,
+    "total_sales": 116,
+    "average_price": "$1.1M",
+    "price_range": "$28K - $2.1M",
+    "team_members_count": null,
+    "scrape_time_seconds": 5.23
+  },
+  {
+    "agent_name": "Emily Anderson",
+    "profile_url": "https://www.zillow.com/profile/EmilyEDRE",
+    "rating_stars": 4.8,
+    "review_count": 21,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 24,
+    "total_sales": 70,
+    "average_price": "$758K",
+    "price_range": "$300K - $2.5M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.06
+  },
+  {
+    "agent_name": "Heather Rieck",
+    "profile_url": "https://www.zillow.com/profile/cedartosoundhomes",
+    "rating_stars": 5,
+    "review_count": 34,
+    "badge_type": null,
+    "sales_last_12_months": 36,
+    "total_sales": 219,
+    "average_price": "$856K",
+    "price_range": "$80K - $3.2M",
+    "team_members_count": 0,
+    "scrape_time_seconds": 5.57
+  },
+  {
+    "agent_name": "Patricia Hurst",
+    "profile_url": "https://www.zillow.com/profile/Patricia-Hurst",
+    "rating_stars": 5,
+    "review_count": 21,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 15,
+    "total_sales": 46,
+    "average_price": "$1.1M",
+    "price_range": "$270K - $2.8M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.92
+  },
+  {
+    "agent_name": "Brian Alfi",
+    "profile_url": "https://www.zillow.com/profile/brianalfi",
+    "rating_stars": 5,
+    "review_count": 117,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 80,
+    "total_sales": 545,
+    "average_price": "$755K",
+    "price_range": "$33K - $2.4M",
+    "team_members_count": 9,
+    "scrape_time_seconds": 5.55
+  },
+  {
+    "agent_name": "Blake McBride",
+    "profile_url": "https://www.zillow.com/profile/BlakeMcBrideBroker",
+    "rating_stars": 5,
+    "review_count": 58,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 8,
+    "total_sales": 69,
+    "average_price": "$894K",
+    "price_range": "$361K - $1.6M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.33
+  },
+  {
+    "agent_name": "Garrett Kaiser",
+    "profile_url": "https://www.zillow.com/profile/garrettkaiser",
+    "rating_stars": 5,
+    "review_count": 22,
+    "badge_type": null,
+    "sales_last_12_months": 9,
+    "total_sales": 139,
+    "average_price": "$766K",
+    "price_range": "$130K - $1.8M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.63
+  },
+  {
+    "agent_name": "Laura Lynn and David Spalding",
+    "profile_url": "https://www.zillow.com/profile/nwrealestateteam",
+    "rating_stars": 4.9,
+    "review_count": 75,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 90,
+    "total_sales": 807,
+    "average_price": "$928K",
+    "price_range": "$18K - $4.8M",
+    "team_members_count": 15,
+    "scrape_time_seconds": 5.1
+  },
+  {
+    "agent_name": "Rachel McMillan",
+    "profile_url": "https://www.zillow.com/profile/rachel3112",
+    "rating_stars": 5,
+    "review_count": 15,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 14,
+    "total_sales": 51,
+    "average_price": "$883K",
+    "price_range": "$325K - $2.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.71
+  },
+  {
+    "agent_name": "Edward Chang",
+    "profile_url": "https://www.zillow.com/profile/Edward-Chang",
+    "rating_stars": 5,
+    "review_count": 81,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 7,
+    "total_sales": 316,
+    "average_price": "$1.6M",
+    "price_range": "$530K - $4.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.94
+  },
+  {
+    "agent_name": "Abigail Echols",
+    "profile_url": "https://www.zillow.com/profile/abigailechols",
+    "rating_stars": 5,
+    "review_count": 23,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 7,
+    "total_sales": 63,
+    "average_price": "$808K",
+    "price_range": "$360K - $1.6M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.91
+  },
+  {
+    "agent_name": "Hannah Krajnik",
+    "profile_url": "https://www.zillow.com/profile/hannahkrajnik",
+    "rating_stars": 4.9,
+    "review_count": 53,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 13,
+    "total_sales": 144,
+    "average_price": "$678K",
+    "price_range": "$216K - $1.6M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.74
+  },
+  {
+    "agent_name": "Kimberlee Cessna",
+    "profile_url": "https://www.zillow.com/profile/Wilcynski-Partners",
+    "rating_stars": 5,
+    "review_count": 10,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 5,
+    "total_sales": 18,
+    "average_price": "$910K",
+    "price_range": "$430K - $1.7M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.85
+  },
+  {
+    "agent_name": "The Latch Key Team",
+    "profile_url": "https://www.zillow.com/profile/latchkeyteam",
+    "rating_stars": 5,
+    "review_count": 144,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 44,
+    "total_sales": 368,
+    "average_price": "$673K",
+    "price_range": "$128K - $3.8M",
+    "team_members_count": 8,
+    "scrape_time_seconds": 4.28
+  },
+  {
+    "agent_name": "Dan Sanchez",
+    "profile_url": "https://www.zillow.com/profile/dansanchezrealtor",
+    "rating_stars": 5,
+    "review_count": 12,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 9,
+    "total_sales": 127,
+    "average_price": "$703K",
+    "price_range": "$20K - $1.9M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.19
+  },
+  {
+    "agent_name": "Hong Gao",
+    "profile_url": "https://www.zillow.com/profile/honggao0",
+    "rating_stars": 5,
+    "review_count": 63,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 17,
+    "total_sales": 64,
+    "average_price": "$1.3M",
+    "price_range": "$330K - $5.0M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.63
+  },
+  {
+    "agent_name": "Jessica Tjoelker",
+    "profile_url": "https://www.zillow.com/profile/jessicatjoelker",
+    "rating_stars": 5,
+    "review_count": 12,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 22,
+    "total_sales": 34,
+    "average_price": "$712K",
+    "price_range": "$285K - $1.9M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.44
+  },
+  {
+    "agent_name": "Marie Dennis",
+    "profile_url": "https://www.zillow.com/profile/mariedennis1",
+    "rating_stars": 5,
+    "review_count": 15,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 9,
+    "total_sales": 46,
+    "average_price": "$729K",
+    "price_range": "$343K - $1.6M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.16
+  },
+  {
+    "agent_name": "Don Weintraub",
+    "profile_url": "https://www.zillow.com/profile/Don-Weintraub",
+    "rating_stars": 5,
+    "review_count": 104,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 11,
+    "total_sales": 360,
+    "average_price": "$1.5M",
+    "price_range": "$390K - $5.5M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.55
+  },
+  {
+    "agent_name": "Kezia Harvey",
+    "profile_url": "https://www.zillow.com/profile/HarveyHomesNW",
+    "rating_stars": 5,
+    "review_count": 76,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 7,
+    "total_sales": 195,
+    "average_price": "$738K",
+    "price_range": "$175K - $1.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.76
+  },
+  {
+    "agent_name": "Chief Odood",
+    "profile_url": "https://www.zillow.com/profile/Chief-Odood",
+    "rating_stars": 5,
+    "review_count": 21,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 7,
+    "total_sales": 45,
+    "average_price": "$594K",
+    "price_range": "$34K - $1.1M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.57
+  },
+  {
+    "agent_name": "Crystal Sailor",
+    "profile_url": "https://www.zillow.com/profile/crystalbanderson0",
+    "rating_stars": 5,
+    "review_count": 21,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 7,
+    "total_sales": 134,
+    "average_price": "$850K",
+    "price_range": "$90K - $2.0M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.4
+  },
+  {
+    "agent_name": "Dan Wilcynski",
+    "profile_url": "https://www.zillow.com/profile/Residential-Agent",
+    "rating_stars": 5,
+    "review_count": 11,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 47,
+    "total_sales": 438,
+    "average_price": "$1.1M",
+    "price_range": "$320K - $3.2M",
+    "team_members_count": null,
+    "scrape_time_seconds": 2.79
+  },
+  {
+    "agent_name": "Eunice Lee",
+    "profile_url": "https://www.zillow.com/profile/eunicel7",
+    "rating_stars": 5,
+    "review_count": 13,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 4,
+    "total_sales": 29,
+    "average_price": "$1.2M",
+    "price_range": "$700K - $2.6M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.24
+  },
+  {
+    "agent_name": "Jennifer Doering-Jones",
+    "profile_url": "https://www.zillow.com/profile/DoeringJones",
+    "rating_stars": 5,
+    "review_count": 18,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 8,
+    "total_sales": 58,
+    "average_price": "$735K",
+    "price_range": "$355K - $1.2M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.4
+  },
+  {
+    "agent_name": "Jocelyn DuPont",
+    "profile_url": "https://www.zillow.com/profile/JocelynDuPont",
+    "rating_stars": 5,
+    "review_count": 52,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 6,
+    "total_sales": 207,
+    "average_price": "$688K",
+    "price_range": "$140K - $2.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 4.35
+  },
+  {
+    "agent_name": "Kyle Grafstrom",
+    "profile_url": "https://www.zillow.com/profile/kylegrafstrom",
+    "rating_stars": 5,
+    "review_count": 54,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 11,
+    "total_sales": 146,
+    "average_price": "$904K",
+    "price_range": "$71K - $4.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.17
+  },
+  {
+    "agent_name": "Matt Michel",
+    "profile_url": "https://www.zillow.com/profile/MrMattMichel",
+    "rating_stars": 5,
+    "review_count": 20,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 4,
+    "total_sales": 37,
+    "average_price": "$817K",
+    "price_range": "$320K - $2.4M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.03
+  },
+  {
+    "agent_name": "Peter Duncan",
+    "profile_url": "https://www.zillow.com/profile/pduncan96",
+    "rating_stars": 5,
+    "review_count": 33,
+    "badge_type": "Top Agent",
+    "sales_last_12_months": 3,
+    "total_sales": 52,
+    "average_price": "$1.1M",
+    "price_range": "$395K - $4.3M",
+    "team_members_count": null,
+    "scrape_time_seconds": 3.33
   }
 ]
