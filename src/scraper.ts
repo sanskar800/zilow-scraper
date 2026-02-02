@@ -5,7 +5,7 @@ import { delay, scrollPageToBottom, parseNumber, waitForPageLoad } from './utils
 export class ZillowScraper {
     private browser: Browser | null = null;
     private readonly listUrl = 'https://www.zillow.com/professionals/real-estate-agent-reviews/seattle-wa/?isTopAgent=true';
-    private readonly agentLimit = 100;
+    private agentLimit = 100;
 
     /**
      * Launch browser instance
@@ -33,7 +33,7 @@ export class ZillowScraper {
     }
 
     /**
-     * Scrape list page with pagination support
+     * Scrape list page with pagination support - JSON extraction approach
      */
     private async scrapeListPage(): Promise<AgentListItem[]> {
         if (!this.browser) throw new Error('Browser not initialized');
@@ -55,120 +55,77 @@ export class ZillowScraper {
                     : `${this.listUrl}&page=${currentPage}`;
 
                 console.log(`\nNavigating to page ${currentPage}...`);
-                await page.goto(pageUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
+                await page.goto(pageUrl, {
+                    waitUntil: 'load',  // Changed from 'networkidle' - bot protection prevents idle
+                    timeout: 60000
+                });
 
-                console.log('Waiting for content to load...');
-                await page.waitForTimeout(8000);
+                console.log('Waiting for page to fully load...');
+                await page.waitForTimeout(15000);
 
-                // Try to wait for profile links
-                console.log('Waiting for agent profile links...');
-                try {
-                    await page.waitForSelector('a[href*="/profile/"]', { timeout: 15000 });
-                    console.log('Profile links found!');
-                } catch {
-                    console.log('WARNING: Timeout waiting for profile links - no more pages');
-                    break; // No more pages available
-                }
+                console.log('Extracting agent data from __NEXT_DATA__ JSON...\n');
 
-                console.log('Scrolling to load all agent cards...');
-                await scrollPageToBottom(page);
-                await page.waitForTimeout(3000);
-
-                console.log('Extracting agent data from DOM...\n');
-
-                // Extract agent links from current page
-                const extractedAgents = await page.evaluate((limit) => {
-                    const results: Array<{
-                        name: string;
-                        url: string;
-                        rating: number;
-                        reviews: number;
-                    }> = [];
-
-                    // Find all links that point to agent profiles
-                    const allLinks = Array.from(document.querySelectorAll('a[href*="/profile/"]'));
-
-                    console.log(`Found ${allLinks.length} profile links`);
-
-                    for (const link of allLinks) {
-                        if (results.length >= limit) break;
-
-                        try {
-                            const href = link.getAttribute('href');
-                            if (!href) continue;
-
-                            // Build full URL
-                            const fullUrl = href.startsWith('http')
-                                ? href
-                                : `https://www.zillow.com${href}`;
-
-                            // Get the link's text and nearby context
-                            const linkText = link.textContent || '';
-
-                            // Parse the text format: "TEAM5.0 (2390)The Every Door TeamEvery Door Real E"
-                            // OR: "5.0 (142)John DoeReal Broker LLC"
-
-                            let rating: number | null = null;
-                            let reviews: number | null = null;
-                            let agentName: string | null = null;
-
-                            // Look for rating pattern (X.X)
-                            const ratingMatch = linkText.match(/(\d+\.\d+)/);
-                            if (ratingMatch) {
-                                rating = parseFloat(ratingMatch[1]);
-                            }
-
-                            // Look for review count in parentheses
-                            const reviewMatch = linkText.match(/\((\d+)\)/);
-                            if (reviewMatch) {
-                                reviews = parseInt(reviewMatch[1], 10);
-                            }
-
-                            // If we found both rating and reviews, extract the name
-                            if (rating && reviews && rating >= 1 && rating <= 5) {
-                                // Remove rating, review count, and extra text to get name
-                                let cleanText = linkText;
-
-                                // Remove "TEAM" prefix if present
-                                cleanText = cleanText.replace(/^TEAM/, '');
-
-                                // Remove rating
-                                cleanText = cleanText.replace(/\d+\.\d+/, '');
-
-                                // Remove review count in parens
-                                cleanText = cleanText.replace(/\(\d+\)/, '');
-
-                                // Split on common separators and take first meaningful part
-                                const parts = cleanText.split(/[•\-$]/);
-                                agentName = parts[0].trim();
-
-                                // If name is still empty or too short, use the whole cleaned text
-                                if (!agentName || agentName.length < 3) {
-                                    agentName = cleanText.trim().substring(0, 100);
-                                }
-
-                                // Final cleanup - take first line if multi-line
-                                agentName = agentName.split('\n')[0].trim();
-
-                                if (agentName && agentName.length >= 3) {
-                                    // Check for duplicates
-                                    if (!results.some(r => r.url === fullUrl)) {
-                                        results.push({
-                                            name: agentName,
-                                            url: fullUrl,
-                                            rating: rating,
-                                            reviews: reviews
-                                        });
-                                    }
-                                }
-                            }
-                        } catch (err) {
-                            continue;
+                // Extract agents from __NEXT_DATA__ JSON
+                const extractedAgents = await page.evaluate(() => {
+                    try {
+                        // Find the __NEXT_DATA__ script tag
+                        const scriptTag = document.querySelector('#__NEXT_DATA__');
+                        if (!scriptTag || !scriptTag.textContent) {
+                            console.log('No __NEXT_DATA__ found');
+                            return [];
                         }
-                    }
 
-                    return results;
-                }, this.agentLimit);
+                        const data = JSON.parse(scriptTag.textContent);
+
+                        // Navigate to the results cards
+                        const resultsCards = data?.props?.pageProps?.displayData
+                            ?.agentDirectoryFinderDisplay?.searchResults?.results?.resultsCards;
+
+                        if (!resultsCards || !Array.isArray(resultsCards)) {
+                            console.log('No results cards found in JSON');
+                            return [];
+                        }
+
+                        const agents: Array<{
+                            name: string;
+                            url: string;
+                            rating: number;
+                            reviews: number;
+                        }> = [];
+
+                        for (const card of resultsCards) {
+                            // Skip non-profile cards (like PLC ads)
+                            if (card.__typename !== 'AgentDirectoryFinderProfileResultsCard') {
+                                continue;
+                            }
+
+                            const name = card.cardTitle;
+                            const url = card.cardActionLink;
+                            const rating = card.reviewInformation?.reviewAverage || 0;
+
+                            // Parse review count from text like "(2390)"
+                            const reviewText = card.reviewInformation?.reviewCountText || '(0)';
+                            const reviewMatch = reviewText.match(/\((\d+)\)/);
+                            const reviews = reviewMatch ? parseInt(reviewMatch[1], 10) : 0;
+
+                            if (name && url && rating > 0) {
+                                agents.push({
+                                    name,
+                                    url,
+                                    rating,
+                                    reviews
+                                });
+                            }
+                        }
+
+                        console.log(`Found ${agents.length} agents on this page`);
+                        return agents;
+
+                    } catch (err) {
+                        console.error('Error parsing JSON:', err);
+                        return [];
+                    }
+                });
 
                 // Add newly extracted agents (avoid duplicates)
                 for (const agent of extractedAgents) {
@@ -223,7 +180,7 @@ export class ZillowScraper {
     }
 
     /**
-     * Scrape detail page for an individual agent
+     * Scrape detail page for an individual agent - JSON extraction approach
      */
     private async scrapeDetailPage(url: string): Promise<AgentDetails> {
         if (!this.browser) throw new Error('Browser not initialized');
@@ -243,224 +200,101 @@ export class ZillowScraper {
         };
 
         try {
-            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-            await page.waitForTimeout(3000);
-            await scrollPageToBottom(page);
+            await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+            await page.waitForTimeout(8000);
 
-            // Extract all detail data
+            // Extract from __NEXT_DATA__ JSON
             const extracted = await page.evaluate(() => {
-                const result = {
-                    badge: null as string | null,
-                    salesLast12Months: null as number | null,
-                    totalSales: null as number | null,
-                    averagePrice: null as string | null,
-                    priceRange: null as string | null,
-                    teamMembers: null as number | null
-                };
-
-                const bodyText = document.body.textContent || '';
-
-                // Extract badge - use multiple strategies for robustness
-                let badgeFound = false;
-
-                // Strategy 1: Look for specific badge-related elements/classes
-                const badgeElements = document.querySelectorAll('[class*="badge" i], [class*="agent-type" i], [class*="designation" i]');
-                for (const el of Array.from(badgeElements)) {
-                    const text = el.textContent?.trim() || '';
-                    if (text.match(/premier\s+agent/i)) {
-                        result.badge = 'Premier Agent';
-                        badgeFound = true;
-                        break;
-                    } else if (text.match(/top\s+agent/i)) {
-                        result.badge = 'Top Agent';
-                        badgeFound = true;
-                        break;
-                    } else if (text.match(/zillow\s+pro/i)) {
-                        result.badge = 'Zillow Pro';
-                        badgeFound = true;
-                        break;
+                try {
+                    // Find __NEXT_DATA__ script tag
+                    const scriptTag = document.querySelector('#__NEXT_DATA__');
+                    if (!scriptTag || !scriptTag.textContent) {
+                        return null;
                     }
-                }
 
-                // Strategy 2: Search in profile header area (first ~2000 chars of visible text)
-                if (!badgeFound) {
-                    // Get the first portion of the page text where profile info usually is
-                    const headerArea = bodyText.substring(0, 2000);
+                    const data = JSON.parse(scriptTag.textContent);
+                    const pageProps = data?.props?.pageProps;
 
-                    if (headerArea.match(/zillow\s+pro/i)) {
-                        result.badge = 'Zillow Pro';
-                        badgeFound = true;
-                    } else if (headerArea.match(/top\s+agent/i)) {
-                        result.badge = 'Top Agent';
-                        badgeFound = true;
-                    } else if (headerArea.match(/premier\s+agent/i)) {
-                        result.badge = 'Premier Agent';
-                        badgeFound = true;
+                    if (!pageProps) {
+                        return null;
                     }
-                }
 
-                // Strategy 3: Look near the agent's name element
-                if (!badgeFound) {
-                    const headings = Array.from(document.querySelectorAll('h1, h2, h3'));
-                    for (const heading of headings) {
-                        const headingText = heading.textContent || '';
-                        // Find the heading that likely contains the agent name (contains the agent name we're looking for)
-                        if (headingText.length > 5 && headingText.length < 100) {
-                            // Check the next few siblings for badge info
-                            let nextEl = heading.nextElementSibling;
-                            for (let i = 0; i < 3 && nextEl; i++) {
-                                const siblingText = nextEl.textContent || '';
-                                if (siblingText.match(/zillow\s+pro/i)) {
-                                    result.badge = 'Zillow Pro';
-                                    badgeFound = true;
-                                    break;
-                                } else if (siblingText.match(/top\s+agent/i)) {
-                                    result.badge = 'Top Agent';
-                                    badgeFound = true;
-                                    break;
-                                } else if (siblingText.match(/premier\s+agent/i)) {
-                                    result.badge = 'Premier Agent';
-                                    badgeFound = true;
-                                    break;
-                                }
-                                nextEl = nextEl.nextElementSibling;
+                    const result = {
+                        badge: null as string | null,
+                        salesLast12Months: null as number | null,
+                        totalSales: null as number | null,
+                        averagePrice: null as string | null,
+                        priceRange: null as string | null,
+                        teamMembers: null as number | null
+                    };
+
+                    // Extract sales stats
+                    const salesStats = pageProps.agentSalesStats;
+                    if (salesStats) {
+                        result.salesLast12Months = salesStats.countLastYear || null;
+                        result.totalSales = salesStats.countAllTime || null;
+
+                        // Format average price
+                        if (salesStats.averageValueThreeYear) {
+                            const avgPrice = salesStats.averageValueThreeYear;
+                            if (avgPrice >= 1000000) {
+                                result.averagePrice = `$${(avgPrice / 1000000).toFixed(1)}M`;
+                            } else if (avgPrice >= 1000) {
+                                result.averagePrice = `$${(avgPrice / 1000).toFixed(0)}K`;
+                            } else {
+                                result.averagePrice = `$${avgPrice}`;
                             }
-                            if (badgeFound) break;
                         }
-                    }
-                }
 
-                // Robust helper to find value associated with a label
-                const findValueForLabel = (targetLabel: string): string | null => {
-                    const allElements = Array.from(document.querySelectorAll('div, span, p, dt, dd, strong, b'));
-
-                    for (const el of allElements) {
-                        const text = el.textContent?.trim();
-
-                        // 1. Strict containment check
-                        if (text && text.includes(targetLabel)) {
-                            // Skip massive containers to avoid grabbing entire rows
-                            if (text.length > 200) continue;
-
-                            let candidate: string | null = null;
-
-                            // Strategy A: concatenated "ValueLabel" in the element or parent
-                            // e.g., "6,666Total sales" or "$710KAverage price"
-                            if (text.endsWith(targetLabel)) {
-                                candidate = text.replace(targetLabel, '').trim();
-                            }
-
-                            // Strategy B: Siblings
-                            // Only use if we matched the Label strictly (or very closely)
-                            // This avoids matching "Average Price" inside a sibling block of "Price Range"
-                            if (!candidate && text === targetLabel) {
-                                const prev = el.previousElementSibling;
-                                if (prev) {
-                                    candidate = prev.textContent?.trim() || null;
+                        // Format price range
+                        const minPrice = salesStats.priceRangeThreeYearMin;
+                        const maxPrice = salesStats.priceRangeThreeYearMax;
+                        if (minPrice && maxPrice) {
+                            const formatPrice = (price: number) => {
+                                if (price >= 1000000) {
+                                    return `$${(price / 1000000).toFixed(1)}M`;
+                                } else if (price >= 1000) {
+                                    return `$${(price / 1000).toFixed(0)}K`;
+                                } else {
+                                    return `$${price}`;
                                 }
-                            }
-
-                            // VALIDATION: Strict filter for valid stats
-                            // Must be short (< 30 chars), non-empty
-                            // Must NOT contain other labels (e.g. dont return "Average Price" as a value)
-                            // Must NOT contain team disclaimer text
-                            if (
-                                candidate &&
-                                candidate.length > 0 &&
-                                candidate.length < 30 &&
-                                !candidate.toLowerCase().includes('price range') &&
-                                !candidate.toLowerCase().includes('average price') &&
-                                !candidate.toLowerCase().includes('total sales') &&
-                                !candidate.toLowerCase().includes('sales last') &&
-                                !candidate.toLowerCase().includes('sales numbers represent') &&
-                                !candidate.toLowerCase().includes('team') &&
-                                !candidate.includes('{') &&
-                                !candidate.includes('function')
-                            ) {
-                                return candidate;
-                            }
+                            };
+                            result.priceRange = `${formatPrice(minPrice)} - ${formatPrice(maxPrice)}`;
                         }
                     }
 
+                    // Extract badge from displayUser
+                    const displayUser = pageProps.displayUser;
+                    if (displayUser) {
+                        // Check for Top Agent badge
+                        if (displayUser.isTopAgent === true) {
+                            result.badge = 'Top Agent';
+                        }
+                        // Could add other badge checks here based on other displayUser fields
+                    }
+
+                    // Extract team members count
+                    const teamInfo = pageProps.teamDisplayInformation;
+                    if (teamInfo?.teamLeadInfo?.children) {
+                        result.teamMembers = teamInfo.teamLeadInfo.children.length;
+                    }
+
+                    return result;
+
+                } catch (err) {
+                    console.error('Error parsing profile JSON:', err);
                     return null;
-                };
-
-                // Extract stats
-                const salesLast12Str = findValueForLabel('Sales last 12 months');
-                if (salesLast12Str) {
-                    const cleanStr = salesLast12Str.replace(/,/g, '');
-                    const match = cleanStr.match(/(\d+)/);
-                    if (match) result.salesLast12Months = parseInt(match[1], 10);
                 }
-
-                const totalSalesStr = findValueForLabel('Total sales');
-                if (totalSalesStr) {
-                    const cleanStr = totalSalesStr.replace(/,/g, '');
-                    const match = cleanStr.match(/(\d+)/);
-                    if (match) result.totalSales = parseInt(match[1], 10);
-                }
-
-                result.averagePrice = findValueForLabel('Average price');
-                result.priceRange = findValueForLabel('Price range') || findValueForLabel('Price Range');
-
-                // Team members detection - multiple strategies
-                let teamCountStr = findValueForLabel('Team members');
-
-                // Strategy 1: Look for discrete "X members" text
-                if (!teamCountStr) {
-                    const allElements = Array.from(document.querySelectorAll('div, span, p, h4, h5, h6'));
-                    for (const el of allElements) {
-                        const txt = el.textContent?.trim();
-                        if (txt && /^\d+\s+members?$/i.test(txt)) {
-                            teamCountStr = txt;
-                            break;
-                        }
-                    }
-                }
-
-                // Strategy 2: Parse from text
-                if (teamCountStr) {
-                    const match = teamCountStr.replace(/,/g, '').match(/(\d+)/);
-                    if (match) result.teamMembers = parseInt(match[1], 10);
-                } else {
-                    // Strategy 3: Count individual team member profile cards
-                    // Works for small teams that show cards instead of a count
-                    if (bodyText.match(/Meet [Tt]he.{0,50}(Team|Group)/)) {
-                        const allDivs = Array.from(document.querySelectorAll('div'));
-
-                        // Find cards matching team member profile pattern
-                        const profileCards = allDivs.filter(div => {
-                            const text = div.textContent || '';
-                            const textLen = text.length;
-
-                            // Card size filter
-                            if (textLen < 80 || textLen > 600) return false;
-
-                            // Must have rating, sales, price range, and image
-                            const hasRating = /\d\.\d\s*★/.test(text) || /\d\.\d\s*\(\d+\)/.test(text);
-                            const hasSales = /\d+\s*sales?\s+last\s+12\s+months/i.test(text);
-                            const hasPriceRange = /\$[\d.]+[KM]?\s*-\s*\$[\d.]+[KM]?\s*price\s+range/i.test(text);
-                            const hasImage = div.querySelector('img') !== null;
-
-                            return hasRating && hasSales && hasPriceRange && hasImage;
-                        });
-
-                        const cardCount = profileCards.length;
-                        if (cardCount >= 2 && cardCount <= 20) {
-                            result.teamMembers = cardCount;
-                        }
-                    }
-                }
-
-                return result;
             });
 
-            details.badge_type = extracted.badge;
-            details.sales_last_12_months = extracted.salesLast12Months;
-            details.total_sales = extracted.totalSales;
-            details.average_price = extracted.averagePrice;
-            details.price_range = extracted.priceRange;
-            details.team_members_count = extracted.teamMembers;
+            if (extracted) {
+                details.badge_type = extracted.badge;
+                details.sales_last_12_months = extracted.salesLast12Months;
+                details.total_sales = extracted.totalSales;
+                details.average_price = extracted.averagePrice;
+                details.price_range = extracted.priceRange;
+                details.team_members_count = extracted.teamMembers;
+            }
 
         } catch (err) {
             console.error(`  WARNING: Error scraping detail page: ${err}`);
@@ -471,6 +305,7 @@ export class ZillowScraper {
 
         return details;
     }
+
 
     /**
      * Main scraper execution

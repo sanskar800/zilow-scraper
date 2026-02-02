@@ -17,32 +17,18 @@ Results are saved to `output.json`.
 **Target**: Seattle Top Agents  
 **Limit**: 100 agents (configurable in `src/scraper.ts`)
 
-## Project Structure
-
-```
-src/
-├── index.ts       # Entry point - orchestrates scraping
-├── scraper.ts     # Main logic: pagination, list page, detail page
-├── types.ts       # TypeScript interfaces
-└── utils.ts       # Helper functions (scroll, delay, etc.)
-```
-
 ## How It Works
 
-### 1. List Page Scraping (`scrapeListPage`)
-- Loops through pages using `&page=N` parameter
-- Finds agent profile links (`a[href*="/profile/"]`)
-- Extracts: name, URL, rating, review count
-- Stops when reaching 100 agents or no more pages
+This scraper uses **Playwright** to automate a real web browser (Chromium). It uses a robust **JSON extraction** strategy:
 
-### 2. Detail Page Scraping (`scrapeDetailPage`)
-- Visits each agent's profile URL
-- Extracts:
-  - **Badge**: Premier Agent, Top Agent, Zillow Pro
-  - **Sales**: Last 12 months, total sales
-  - **Price**: Average price, price range
-  - **Team**: Member count (if team)
-- Runs in parallel batches of 5 for performance
+1.  **Navigates** to the Zillow agent list page.
+2.  **Extracts** agent data directly from the `__NEXT_DATA__` JSON script tag embedded in the page (bypassing complex DOM selectors).
+3.  **Paginate** through the list pages to collect all agent profiles.
+4.  **Visits** each agent's profile page in parallel (concurrency limit: 5).
+5.  **Extracts** detailed stats (badges, sales volume, team members) from the profile page's `__NEXT_DATA__` JSON.
+6.  **Saves** the combined data to `output.json`.
+
+This approach is significantly faster and more reliable than traditional DOM scraping as it reads the raw data used by Zillow's frontend framework (Next.js).
 
 ### 3. Output
 Each agent includes:
