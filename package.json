@@ -1,0 +1,28 @@
+{
+    "name": "zillow-scraper",
+    "version": "1.0.0",
+    "description": "Production-quality TypeScript scraper for Zillow real estate agent data",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "npm run build && node dist/index.js",
+        "dev": "tsc && node dist/index.js",
+        "debug": "tsc && node dist/debug.js"
+    },
+    "keywords": [
+        "zillow",
+        "scraper",
+        "playwright",
+        "typescript",
+        "real-estate"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "playwright": "^1.40.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.0",
+        "typescript": "^5.3.0"
+    }
+}
