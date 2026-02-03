@@ -9,7 +9,7 @@ async function main() {
     console.log('Zillow Agent Scraper\n');
     console.log('='.repeat(50));
     console.log('Target: Seattle Top Agents');
-    console.log('Limit: 100 agents');
+    console.log('Limit: 1000 agents');
     console.log('='.repeat(50) + '\n');
 
     try {

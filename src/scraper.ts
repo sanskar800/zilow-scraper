@@ -5,7 +5,7 @@ import { delay, scrollPageToBottom, parseNumber, waitForPageLoad } from './utils
 export class ZillowScraper {
     private browser: Browser | null = null;
     private readonly listUrl = 'https://www.zillow.com/professionals/real-estate-agent-reviews/seattle-wa/?isTopAgent=true';
-    private agentLimit = 100;
+    private agentLimit = 1000;
 
     /**
      * Launch browser instance
@@ -64,7 +64,35 @@ export class ZillowScraper {
                 try {
                     await page.waitForSelector('#__NEXT_DATA__', { state: 'attached', timeout: 15000 });
                 } catch (e) {
-                    console.log('Wait for JSON timed out, attempting extraction anyway...');
+                    console.log('Wait for JSON timed out. Checking for bot protection...');
+
+                    // Check for common bot protection texts
+                    const isBotProtection = await page.evaluate(() => {
+                        return document.body.innerText.includes('Press and Hold') ||
+                            document.body.innerText.includes('challenge') ||
+                            document.title.includes('Robot') ||
+                            document.title.includes('Captcha');
+                    });
+
+                    if (isBotProtection) {
+                        console.log('\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+                        console.log('BOT PROTECTION DETECTED!');
+                        console.log('Please switch to the browser window and solve the CAPTCHA manually.');
+                        console.log('The scraper is paused and waiting for you to solve it...');
+                        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n');
+
+                        // Wait indefinitely for the user to solve it and the data to appear
+                        try {
+                            await page.waitForSelector('#__NEXT_DATA__', { state: 'attached', timeout: 300000 }); // Wait 5 mins
+                            console.log('Captcha solved! Resuming...');
+                            await delay(2000); // Give it a moment to settle
+                        } catch (timeoutErr) {
+                            console.log('Timed out waiting for manual solve. Skipping page...');
+                            continue;
+                        }
+                    } else {
+                        console.log('No obvious bot protection found, attempting extraction anyway...');
+                    }
                 }
 
                 console.log('Extracting agent data from __NEXT_DATA__ JSON...\n');
@@ -132,9 +160,11 @@ export class ZillowScraper {
                 });
 
                 // Add newly extracted agents (avoid duplicates)
+                let newAgentsOnPage = 0;
                 for (const agent of extractedAgents) {
                     // Check for duplicates
                     if (agents.find(a => a.profile_url === agent.url)) continue;
+
                     if (agents.length >= this.agentLimit) break;
 
                     agents.push({
@@ -143,6 +173,7 @@ export class ZillowScraper {
                         rating_stars: agent.rating,
                         review_count: agent.reviews
                     });
+                    newAgentsOnPage++;
 
                     console.log(`  [${agents.length}] ${agent.name}`);
                     console.log(`      ${agent.rating}★ • ${agent.reviews} reviews`);
@@ -157,6 +188,12 @@ export class ZillowScraper {
                     break;
                 }
 
+                // Break if no NEW agents were added (handling Zillow's infinite repeat of last page)
+                if (newAgentsOnPage === 0) {
+                    console.log('No new agents found on this page (likely reached end of results). Stopping pagination.\n');
+                    break;
+                }
+
                 if (agents.length >= this.agentLimit) {
                     console.log(`Reached agent limit of ${this.agentLimit}. Stopping pagination.\n`);
                     break;
@@ -164,7 +201,8 @@ export class ZillowScraper {
 
                 // Move to next page
                 currentPage++;
-                await delay(2000); // Polite delay between pages
+                const pauseTime = Math.floor(Math.random() * 3000) + 2000; // Random delay 2-5s
+                await delay(pauseTime);
             }
 
             if (agents.length > 0) {
@@ -207,10 +245,38 @@ export class ZillowScraper {
             await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
             // Wait for __NEXT_DATA__ to be present instead of hard wait
+            // Wait for __NEXT_DATA__ to be present instead of hard wait
             try {
                 await page.waitForSelector('#__NEXT_DATA__', { state: 'attached', timeout: 15000 });
             } catch (e) {
-                console.log('    Wait for JSON timed out, attempting extraction anyway...');
+                console.log('    Wait for JSON timed out. Checking for bot protection...');
+
+                // Check for common bot protection texts
+                const isBotProtection = await page.evaluate(() => {
+                    return document.body.innerText.includes('Press and Hold') ||
+                        document.body.innerText.includes('challenge') ||
+                        document.title.includes('Robot') ||
+                        document.title.includes('Captcha');
+                });
+
+                if (isBotProtection) {
+                    console.log('\n    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+                    console.log('    BOT PROTECTION DETECTED ON DETAIL PAGE!');
+                    console.log('    Please switch to the browser window and solve the CAPTCHA manually.');
+                    console.log('    The scraper is paused and waiting for you to solve it...');
+                    console.log('    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n');
+
+                    // Wait indefinitely for the user to solve it and the data to appear
+                    try {
+                        await page.waitForSelector('#__NEXT_DATA__', { state: 'attached', timeout: 300000 }); // Wait 5 mins
+                        console.log('    Captcha solved! Resuming...');
+                        await delay(2000); // Give it a moment to settle
+                    } catch (timeoutErr) {
+                        console.log('    Timed out waiting for manual solve. Skipping page...');
+                    }
+                } else {
+                    console.log('    No obvious bot protection found, attempting extraction anyway...');
+                }
             }
 
             // Extract from __NEXT_DATA__ JSON
@@ -273,14 +339,14 @@ export class ZillowScraper {
                         }
                     }
 
-                    // Extract badge from displayUser
-                    const displayUser = pageProps.displayUser;
-                    if (displayUser) {
-                        // Check for Top Agent badge
-                        if (displayUser.isTopAgent === true) {
-                            result.badge = 'Top Agent';
+                    // Extract badge from graphQLData
+                    const graphQLData = pageProps.graphQLData;
+                    if (graphQLData) {
+                        if (graphQLData.isPremium === true) {
+                            result.badge = 'Zillow Pro';
+                        } else if (graphQLData.premierAgentSection) {
+                            result.badge = 'Premier Agent';
                         }
-                        // Could add other badge checks here based on other displayUser fields
                     }
 
                     // Extract team members count
@@ -339,7 +405,7 @@ export class ZillowScraper {
             // Step 2: Scrape detail pages in parallel (with concurrency limit)
             console.log('Scraping detail pages in parallel...\n');
 
-            const CONCURRENCY_LIMIT = 5; // Process 5 agents at a time
+            const CONCURRENCY_LIMIT = 5; // Process 5 agents at a time (Balanced)
             const batches: AgentListItem[][] = [];
 
             // Split agents into batches
@@ -362,8 +428,7 @@ export class ZillowScraper {
 
                     const result: AgentData = {
                         ...agent,
-                        ...details,
-                        scrape_time_seconds: parseFloat(agentScrapeTime.toFixed(2))
+                        ...details
                     };
 
                     console.log(`[${globalIndex + 1}/${listItems.length}] DONE: ${agent.agent_name}`);
